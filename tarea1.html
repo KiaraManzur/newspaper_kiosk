@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <iframe id="abc" src="https://www.abc.com.py/"></iframe>
+    <div id="buttons">
+        <button id="Anterior">Anterior</button>
+        <button id="Siguiente">Siguiente</button>
+   <script>
+    const newspapers = [
+            "https://www.abc.com.py",
+            "https://www.ultimahora.com",
+            "https://www.5dias.com.py",
+            "https://www.bbc.com",
+            "https://www.cnn.com"
+        ];
+        let current=0;
+        const frame=document.getElementById("abc");
+        const Anterior=document.getElementById("Anterior");
+        const Siguiente = document.getElementById("Siguiente");
+
+        function cargar(index) {
+            frame.src = newspapers[index];
+        }
+        cargar (current);
+        
+        Anterior.addEvent("click", () => {
+            current = (current - 1 + newspapers.length) % newspapers.length;
+            cargar(current);
+        });
+        
+        Siguiente.addEvent("click", () => {
+            current = (current + 1) % newspapers.length;
+            cargar(current);
+        });
+   </script>
+</div>
+</body>
+</html>
